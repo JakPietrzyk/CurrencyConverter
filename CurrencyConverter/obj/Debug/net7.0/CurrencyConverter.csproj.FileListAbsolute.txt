@@ -1,0 +1,17 @@
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\CurrencyConverter.csproj.AssemblyReference.cache
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\CurrencyConverter.GeneratedMSBuildEditorConfig.editorconfig
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\CurrencyConverter.AssemblyInfoInputs.cache
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\CurrencyConverter.AssemblyInfo.cs
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\CurrencyConverter.csproj.CoreCompileInputs.cache
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\bin\Debug\net7.0\CurrencyConverter.exe
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\bin\Debug\net7.0\CurrencyConverter.deps.json
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\bin\Debug\net7.0\CurrencyConverter.runtimeconfig.json
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\bin\Debug\net7.0\CurrencyConverter.dll
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\bin\Debug\net7.0\CurrencyConverter.pdb
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\CurrencyConverter.csproj.CopyComplete
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\CurrencyConverter.dll
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\refint\CurrencyConverter.dll
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\CurrencyConverter.pdb
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\CurrencyConverter.genruntimeconfig.cache
+C:\c#_MyProjects\CurrencyConverter\CurrencyConverter\obj\Debug\net7.0\ref\CurrencyConverter.dll
