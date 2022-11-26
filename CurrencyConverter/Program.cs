@@ -1,9 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -14,11 +17,14 @@ namespace CurrencyConverter
     {
         static void Main(string[] args)
         {
-            Root val = new Root();
+            Currency myval = new Currency();
             async void GetValue()
             {
-                val = await GetData<Root>("https://openexchangerates.org/api/latest.json?app_id=51ef38854bd44ec6b04b1800b06792bd&base=PLN");
-                Console.WriteLine("{0}",val.rates.EUR);
+                myval = await GetData<Currency>("https://api.nbp.pl/api/exchangerates/rates/a/chf/?format=json");
+                //Console.WriteLine("{0} | {1} | {2} | {3}",myval.currency,myval.code,myval.rates.effectiveDate,myval.rates.mid);
+                Console.WriteLine("{0} | {1} ", myval.currency, myval.code);
+                //Console.WriteLine("{0}",myval.rates);
+               // Console.WriteLine(string.Join(", ", myval.rates.ToArray()));
             }
             GetValue();
 
@@ -26,47 +32,67 @@ namespace CurrencyConverter
         }
 
         
-        public class Root
-        {
-            public Rate rates { get; set; }
-            public long timestamp;
-            public string license;
-        }
+        
 
         public class Rate
         {
-            public double USD { get; set; }
-            public double PLN { get; set; }
-            public double EUR { get; set; }
+            public string effectiveDate { get; set; }
+            public double mid { get; set; }
+        }
+
+        public class Currency
+        {
+            public string currency { get; set; }
+            public string code { get; set; }
+            //public string[] rates { get; set; }
+            public Rate[] rates;
         }
 
         
 
 
-        public static async Task<Root> GetData<T>(string url)
+        public static async Task<Currency> GetData<T>(string url)
         {
-            var myroot = new Root();
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    client.Timeout = TimeSpan.FromMinutes(1);
-                    HttpResponseMessage response = await client.GetAsync(url);
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        var ResponseString = await response.Content.ReadAsStringAsync();
-                        var ResponseObject = JsonConvert.DeserializeObject<Root>(ResponseString);
+                var myroot = new Currency();
+           
+                //using (var client = new HttpClient())
+                //{
+                //    client.Timeout = TimeSpan.FromMinutes(1);
+                //    HttpResponseMessage response = await client.GetAsync(url);
+                //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                //    {
+                //        var ResponseString = await response.Content.ReadAsStringAsync();
+                //        var ResponseObject = JsonConvert.DeserializeObject<Currency>(ResponseString);
 
-                        return ResponseObject;
-                    }
-                    return myroot;
-                }
-            }
-            catch
-            {
-                Console.WriteLine("Error no connection");
-                return myroot;
-            }
+
+                //        return ResponseObject;
+                //    }
+                //    return myroot;
+                //}
+                string json = @"{'table':'A','currency':'frank szwajcarski','code':'CHF','rates':[{'no':'228/A/NBP/2022','effectiveDate':'2022-11-25','mid':4.7729}]}";
+                var ResponseObject = JsonConvert.DeserializeObject<Currency>(json);
+            Console.WriteLine("{0}", ResponseObject.rates[0].mid);
+                
+
+            //dynamic dObject = JObject.Parse(json);
+            //foreach(var prop in dObject.rates)
+            //{
+            //    var cur = prop.Value;
+
+            //    Console.WriteLine("{0}",cur.mid);
+            //}
+
+
+            
+            
+
+
+
+            //Console.WriteLine("{0}|",ResponseObject.code);
+            //Console.WriteLine("{0}",ResponseObject.rates);
+            Console.ReadKey();
+                return ResponseObject;
+            
         }
 
         
