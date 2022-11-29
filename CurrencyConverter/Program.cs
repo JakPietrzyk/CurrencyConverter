@@ -19,13 +19,41 @@ namespace CurrencyConverter
     {
         static void Main(string[] args)
         {
-            GetCurrencyNames();
-            
+
+            //GetCurrencyNames();
             //if(userCurInput)
             //GetLastValue(userCurInput);
             //TenGetLastValue(userCurInput);
+            //Console.WriteLine("main");
+            //Console.ReadKey();
+            //Task p = Task.Run(() =>
+            //{
+            bool flag = true;
+            while(flag)
+            {
+                GetCurrencyNames();
+                Console.WriteLine("Enter to try next currency");
+                string ui = Console.ReadLine();
+                if(ui=="0")
+                {
+                    break;
+                }
+
+            }
+            
+            System.Threading.Thread.Sleep(20000);
+            //});
+            //p.Wait();
+            //TimeSpan ts = TimeSpan.FromMilliseconds(15000);
+            //if (!p.Wait(ts))
+            //{ 
+            //    Console.WriteLine("The timeout interval elapsed.");
+            //}
+
 
             Console.ReadKey();
         }
+
+
     }
 }

@@ -33,21 +33,18 @@ namespace CurrencyConverter
                 Console.WriteLine("{0} - {1}", rate.mid, rate.effectiveDate);
             }
         }
-
-        public void CheckUserInput(string userString)
-        {
-
-        }
         public static async void GetCurrencyNames()
         {
             string url = "https://api.nbp.pl/api/exchangerates/tables/a/today/?format=json";
             CurrencyNames val = new CurrencyNames();
             val = await GetNamesData<CurrencyNames>(url);
             bool result = false;
+            Console.WriteLine("Insert currency code or name");
             string userString = Console.ReadLine();
+            //Console.WriteLine("hello");
+            //string userString = "eur";
             while (result==false)
             {
-                
                 if (userString=="help")
                 {
                     PrintNames(val);
@@ -64,11 +61,19 @@ namespace CurrencyConverter
                 {
                     Console.WriteLine("Wrong name use dictionary");
                 }
-                userString= Console.ReadLine();
+                else
+                {
+                    break;
+                }
+                userString = Console.ReadLine();
             }
+
             GetLastValue(userString);
             TenGetLastValue(userString);
+
         }
+
+
         public static void PrintNames(CurrencyNames val)
         {
             foreach (var rate in val.rates)
