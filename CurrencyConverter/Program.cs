@@ -31,7 +31,9 @@ namespace CurrencyConverter
             bool flag = true;
             while(flag)
             {
-                GetCurrencyNames();
+                Task t = GetCurrencyNames();
+                t.Wait();
+                System.Threading.Thread.Sleep(250);
                 Console.WriteLine("Enter to try next currency");
                 string ui = Console.ReadLine();
                 if(ui=="0")
@@ -41,7 +43,7 @@ namespace CurrencyConverter
 
             }
             
-            System.Threading.Thread.Sleep(20000);
+            //System.Threading.Thread.Sleep(20000);
             //});
             //p.Wait();
             //TimeSpan ts = TimeSpan.FromMilliseconds(15000);
@@ -51,7 +53,7 @@ namespace CurrencyConverter
             //}
 
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
 

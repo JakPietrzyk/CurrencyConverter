@@ -33,7 +33,7 @@ namespace CurrencyConverter
                 Console.WriteLine("{0} - {1}", rate.mid, rate.effectiveDate);
             }
         }
-        public static async void GetCurrencyNames()
+        public static async Task<CurrencyNames> GetCurrencyNames()
         {
             string url = "https://api.nbp.pl/api/exchangerates/tables/a/today/?format=json";
             CurrencyNames val = new CurrencyNames();
@@ -55,22 +55,23 @@ namespace CurrencyConverter
                     if (userString == rate.code || userString == rate.currency)
                     {
                         result = true;
+                        break;
                     }
+                }
+                if (result == true && userString != "help")
+                {
+                    break;
                 }
                 if (result == false&&userString!="help")
                 {
                     Console.WriteLine("Wrong name use dictionary");
-                }
-                else
-                {
-                    break;
                 }
                 userString = Console.ReadLine();
             }
 
             GetLastValue(userString);
             TenGetLastValue(userString);
-
+            return val;
         }
 
 
